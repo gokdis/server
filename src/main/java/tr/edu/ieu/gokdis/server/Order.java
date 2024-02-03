@@ -7,12 +7,5 @@ import java.util.Date;
 import java.util.UUID;
 
 @Table
-public record Order(
-        @PrimaryKey UUID id,
-        UUID customerId,
-        UUID productId,
-        String description,
-        int quantity,
-        Date time
-) {
+public record Order(@PrimaryKey UUID id, UUID customerId, UUID productId, String description, int quantity, Date time) {
 }

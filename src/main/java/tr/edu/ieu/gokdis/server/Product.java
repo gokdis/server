@@ -6,12 +6,5 @@ import org.springframework.data.cassandra.core.mapping.Table;
 import java.util.UUID;
 
 @Table
-public record Product(
-        @PrimaryKey UUID id,
-        UUID sectionId,
-        String name,
-        String description,
-        int stock,
-        double price
-) {
+public record Product(@PrimaryKey UUID id, UUID sectionId, String name, String description, int stock, double price) {
 }

@@ -6,8 +6,5 @@ import org.springframework.data.cassandra.core.mapping.Table;
 import java.util.UUID;
 
 @Table
-public record Department(
-        @PrimaryKey UUID id,
-        String name
-) {
+public record Department(@PrimaryKey UUID id, String name) {
 }
