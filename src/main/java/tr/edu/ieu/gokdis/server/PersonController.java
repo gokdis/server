@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/person")
+@RequestMapping(value = "api/v1")
 public class PersonController {
     @Autowired
     private PersonRepository repository;
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @GetMapping
+    @GetMapping(value = "/person")
     public Iterable<Person> findAll() {
         return repository.findAll();
     }
@@ -32,7 +32,7 @@ public class PersonController {
     // TODO: implement logic
     @PutMapping(value = "/person/{email}")
     public Person updateByEmail(@PathVariable String email, @RequestBody Person person) {
-        return null;
+        return repository.updateByEmail(email,person);
     }
 
     @PostMapping(value = "/person")
