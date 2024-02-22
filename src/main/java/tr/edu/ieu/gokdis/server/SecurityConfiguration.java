@@ -16,7 +16,7 @@ public class SecurityConfiguration {
                 authorizeHttpRequests -> authorizeHttpRequests.requestMatchers("/**").hasRole("ADMIN"))
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
-                .csrf().disable();
+                .csrf().disable().requiresChannel().anyRequest().requiresSecure();
         return http.build();
     }
 
