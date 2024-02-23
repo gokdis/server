@@ -1,19 +1,57 @@
-# Documentation
+# server
 
-# Endpoint Examples
+## Prerequisities
+* Debian GNU/Linux
 
-## Person
+[https://www.debian.org/](https://www.debian.org/releases/stable/installmanual)
+* Get OpenJDK 17
+
+```sh
+sudo apt install default-jdk
+```
+* Get Docker
+
+```sh
+sudo apt install docker && sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
+```
+* Get Cassandra using Docker
+
+```sh
+docker pull cassandra && docker network create cassandra
+```
+* Update hosts
+
+```sh
+echo '127.0.0.1    gokdis.erke.biz.tr' | sudo tee -a /etc/hosts
+```
+## Quickstart
+* Start Cassandra
+
+```sh
+docker run --rm -d --name cassandra --hostname cassandra --network cassandra cassandra
+```
+* Start Spring Boot
+
+```sh
+./mvnw clean spring-boot:run
+```
+* Log in at [https://gokdis.erke.biz.tr/](https://gokdis.erke.biz.tr/login)
+
+## 
+## Endpoint Examples
+
+### Person
 
 GET(ALL) localhost:8080/api/v1/person
 
-GET(ONE) localhost:8080/api/v1/person/can@gmail.com
+GET(ONE) localhost:8080/api/v1/person/can@ieu.edu.tr
 
-PUT localhost:8080/api/v1/person/can@gmail.com
+PUT localhost:8080/api/v1/person/can@ieu.edu.tr
 
 Body Example in JSON:
 
 {
-    "email": "can@gmail.com",
+    "email": "can@ieu.edu.tr",
     "password": "hey",
     "role": "admin",
     "name": null,
@@ -25,14 +63,14 @@ POST localhost:8080/api/v1/person
 Body Example in JSON:
 
 {
-    "email": "can@gmail.com",
+    "email": "can@ieu.edu.tr",
     "password": "123",
     "role": null,
     "name": null,
     "age": 0 
 }
 
-DELETE localhost:8080/api/v1/person/can@gmail.com
+DELETE localhost:8080/api/v1/person/can@ieu.edu.tr
 
 ## Beacon
 
@@ -62,7 +100,7 @@ Body Example in JSON:
 
 DELETE localhost:8080/api/v1/beacon/123
 
-## Department
+### Department
 
 GET(ALL) localhost:8080/api/v1/department
 
@@ -88,7 +126,7 @@ Body Example in JSON:
 
 DELETE localhost:8080/api/v1/department/3931227c-667a-4df7-a950-d49d62368c66
 
-## Order
+### Order
 
 GET(ALL) localhost:8080/api/v1/order
 
@@ -122,7 +160,7 @@ Body Example in JSON:
 
 DELETE localhost:8080/api/v1/order/3931227c-667a-4df7-a950-d49d62368c66
 
-## Position
+### Position
 
 GET(ALL) localhost:8080/api/v1/position
 
@@ -154,7 +192,7 @@ Body Example in JSON:
 
 DELETE localhost:8080/api/v1/position/3931227c-667a-4df7-a950-d49d62368c66
 
-## Product
+### Product
 
 GET(ALL) localhost:8080/api/v1/product
 
@@ -188,7 +226,7 @@ Body Example in JSON:
 
 DELETE localhost:8080/api/v1/product/3931227c-667a-4df7-a950-d49d62368c66
 
-## Section
+### Section
 
 GET(ALL) localhost:8080/api/v1/section
 
