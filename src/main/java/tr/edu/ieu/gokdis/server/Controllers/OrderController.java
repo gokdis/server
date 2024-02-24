@@ -8,7 +8,6 @@ import tr.edu.ieu.gokdis.server.Repos.OrderRepository;
 @RestController
 @RequestMapping(value = "api/v1")
 public class OrderController {
-
     @Autowired
     private OrderRepository repository;
 
@@ -24,15 +23,15 @@ public class OrderController {
 
     @PutMapping(value = "/order/{id}")
     public Order updateById(@PathVariable String id, @RequestBody Order order) {
-        return repository.updateById(id,order);
+        return repository.updateById(id, order);
     }
 
     @PostMapping(value = "/order")
     public Order saveOrderById(@RequestBody Order order) {
         return repository.save(new Order(
-                order.id(),order.customerId(),
-                order.productId(),order.description(),
-                order.quantity(),order.time()));
+                order.id(), order.customerId(),
+                order.productId(), order.description(),
+                order.quantity(), order.time()));
     }
 
     @DeleteMapping(value = "/order/{id}")

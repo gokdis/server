@@ -5,11 +5,9 @@ import org.springframework.web.bind.annotation.*;
 import tr.edu.ieu.gokdis.server.Repos.SectionRepository;
 import tr.edu.ieu.gokdis.server.Section;
 
-//ok
 @RestController
 @RequestMapping(value = "api/v1")
 public class SectionController {
-
     @Autowired
     private SectionRepository repository;
 
@@ -25,13 +23,13 @@ public class SectionController {
 
     @PutMapping(value = "/section/{id}")
     public Section updateByMac(@PathVariable String id, @RequestBody Section section) {
-        return repository.updateById(id,section);
+        return repository.updateById(id, section);
     }
 
     @PostMapping(value = "/section")
     public Section saveSectionById(@RequestBody Section section) {
-        return repository.save(new Section(section.id(),section.departmentId(),section.name(),
-                section.x1(),section.x2(),section.y1(), section.y2()));
+        return repository.save(new Section(section.id(), section.departmentId(), section.name(),
+                section.x1(), section.x2(), section.y1(), section.y2()));
     }
 
     @DeleteMapping(value = "/section/{id}")

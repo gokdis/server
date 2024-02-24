@@ -1,15 +1,13 @@
 package tr.edu.ieu.gokdis.server.Controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tr.edu.ieu.gokdis.server.Department;
 import tr.edu.ieu.gokdis.server.Repos.DepartmentRepository;
-//ok
+
 @RestController
 @RequestMapping(value = "api/v1")
 public class DepartmentController {
-
     @Autowired
     private DepartmentRepository repository;
 
@@ -25,12 +23,12 @@ public class DepartmentController {
 
     @PutMapping(value = "/department/{id}")
     public Department updateById(@PathVariable String id, @RequestBody Department department) {
-        return repository.updateById(id,department);
+        return repository.updateById(id, department);
     }
 
     @PostMapping(value = "/department")
     public Department saveDepartmentById(@RequestBody Department department) {
-        return repository.save(new Department(department.id(),department.name()));
+        return repository.save(new Department(department.id(), department.name()));
     }
 
     @DeleteMapping(value = "/department/{id}")

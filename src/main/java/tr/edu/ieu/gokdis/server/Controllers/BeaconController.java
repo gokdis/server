@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tr.edu.ieu.gokdis.server.Beacon;
 import tr.edu.ieu.gokdis.server.Repos.BeaconRepository;
-//ok
+
 @RestController
 @RequestMapping(value = "api/v1")
 public class BeaconController {
-
     @Autowired
     private BeaconRepository repository;
 
@@ -24,12 +23,12 @@ public class BeaconController {
 
     @PutMapping(value = "/beacon/{mac}")
     public Beacon updateByMac(@PathVariable String mac, @RequestBody Beacon beacon) {
-        return repository.updateByMac(mac,beacon);
+        return repository.updateByMac(mac, beacon);
     }
 
     @PostMapping(value = "/beacon")
     public Beacon saveBeaconByMac(@RequestBody Beacon beacon) {
-        return repository.save(new Beacon(beacon.mac(),beacon.x(), beacon.y()));
+        return repository.save(new Beacon(beacon.mac(), beacon.x(), beacon.y()));
     }
 
     @DeleteMapping(value = "/beacon/{mac}")

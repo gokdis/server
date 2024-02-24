@@ -8,9 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface BeaconRepository extends CrudRepository<Beacon, UUID> {
-
     Optional<Beacon> findByMac(String mac);
-
 
     default Beacon updateByMac(String mac, Beacon updatedBeacon) {
         return findByMac(mac).map(existingBeacon -> {

@@ -29,10 +29,9 @@ public class PersonController {
         return repository.findByEmail(email).orElseThrow();
     }
 
-    // TODO: implement logic
     @PutMapping(value = "/person/{email}")
     public Person updateByEmail(@PathVariable String email, @RequestBody Person person) {
-        return repository.updateByEmail(email,person);
+        return repository.updateByEmail(email, person);
     }
 
     @PostMapping(value = "/person")

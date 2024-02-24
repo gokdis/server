@@ -8,7 +8,6 @@ import tr.edu.ieu.gokdis.server.Repos.PositionRepository;
 @RestController
 @RequestMapping(value = "api/v1")
 public class PositionController {
-
     @Autowired
     private PositionRepository repository;
 
@@ -24,14 +23,14 @@ public class PositionController {
 
     @PutMapping(value = "/position/{id}")
     public Position updateById(@PathVariable String id, @RequestBody Position position) {
-        return repository.updateById(id,position);
+        return repository.updateById(id, position);
     }
 
     @PostMapping(value = "/position")
     public Position savePositionById(@RequestBody Position position) {
         return repository.save(new Position(
-                position.id(),position.customerId(),
-                position.x(),position.y(),
+                position.id(), position.customerId(),
+                position.x(), position.y(),
                 position.time()));
     }
 

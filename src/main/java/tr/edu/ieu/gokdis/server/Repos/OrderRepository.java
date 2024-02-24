@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface OrderRepository extends CrudRepository<Order, UUID> {
-
     Optional<Order> findById(String id);
 
     default Order updateById(String id, Order updatedOrder) {
