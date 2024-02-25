@@ -24,16 +24,30 @@ public class ServerApplication {
     public CommandLineRunner savePeople(PersonRepository personRepository) {
         return args -> {
             personRepository.deleteAll();
-
-            personRepository.save(new Person("helen@ieu.edu.tr", passwordEncoder.encode("helen"), "ROLE_ADMIN",
-                    "helen", 17));
-            personRepository.save(
-                    new Person("paris@ieu.edu.tr", passwordEncoder.encode("helen"), "ROLE_USER",
-                            "paris", 18));
-
+        
+            personRepository.save(new Person(
+                "helen@ieu.edu.tr", 
+                passwordEncoder.encode("helen"), 
+                "ROLE_ADMIN",
+                "Helen", 
+                17, 
+                "Female", 
+                "Doe" 
+            ));
+            personRepository.save(new Person(
+                "paris@ieu.edu.tr", 
+                passwordEncoder.encode("paris"), 
+                "ROLE_USER",
+                "Paris", 
+                18, 
+                "Male", 
+                "Smith" 
+            ));
+        
             personRepository.findAll()
-                    .forEach(p -> LOG.info(p));
+                .forEach(p -> LOG.info(p.toString())); 
         };
+        
     }
 
     @Bean

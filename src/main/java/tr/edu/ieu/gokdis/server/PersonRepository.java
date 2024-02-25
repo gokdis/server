@@ -11,15 +11,18 @@ import org.springframework.stereotype.Repository;
 public interface PersonRepository extends CrudRepository<Person, UUID> {
     Optional<Person> findByEmail(String email);
 
-    default Person updateByEmail(String email, Person updatedPerson) {
+    public default Person updateByEmail(String email, Person updatedPerson) {
         return findByEmail(email).map(existingPerson -> {
             Person updatedRecord = new Person(
-                    existingPerson.email(),
+                    existingPerson.email(), 
                     updatedPerson.password() != null ? updatedPerson.password() : existingPerson.password(),
                     updatedPerson.role() != null ? updatedPerson.role() : existingPerson.role(),
                     updatedPerson.name() != null ? updatedPerson.name() : existingPerson.name(),
-                    updatedPerson.age());
+                    updatedPerson.age(), 
+                    updatedPerson.gender() != null ? updatedPerson.gender() : existingPerson.gender(),
+                    updatedPerson.surname() != null ? updatedPerson.surname() : existingPerson.surname());
             return save(updatedRecord);
         }).orElseThrow(() -> new NoSuchElementException("Person not found with email: " + email));
     }
+    
 }

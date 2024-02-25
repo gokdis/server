@@ -36,9 +36,17 @@ public class PersonController {
 
     @PostMapping(value = "/person")
     public Person savePersonByEmail(@RequestBody Person person) {
-        return repository.save(new Person(person.email(), passwordEncoder.encode(person.password()), person.role(),
-                person.role(), person.age()));
+        return repository.save(new Person(
+            person.email(), 
+            passwordEncoder.encode(person.password()), 
+            person.role(),
+            person.name(), 
+            person.age(), 
+            person.gender(), 
+            person.surname()
+        ));
     }
+    
 
     @DeleteMapping(value = "/person/{email}")
     public void deleteByEmail(@PathVariable String email) {
