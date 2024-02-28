@@ -35,7 +35,7 @@ docker run --rm -d --name cassandra --hostname cassandra --network cassandra cas
 ```sh
 ./mvnw clean spring-boot:run
 ```
-* Log in at [https://gokdis.erke.biz.tr/](https://gokdis.erke.biz.tr/login)
+* Log in at [https://gokdis.mooo.com:8443/](https://gokdis.mooo.com:8443/login)
 
 ## 
 ## Endpoint Examples
