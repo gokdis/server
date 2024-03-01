@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tr.edu.ieu.gokdis.server.Product;
 import tr.edu.ieu.gokdis.server.Repos.ProductRepository;
 
 @RestController
+@RequestMapping("api/v1")
 public class ProductController {
     @Autowired
     private ProductRepository repository;
