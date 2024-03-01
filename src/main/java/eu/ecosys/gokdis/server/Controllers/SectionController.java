@@ -26,28 +26,27 @@ public class SectionController {
         return repository.findAll();
     }
 
-    @GetMapping(value = "/section/{id}")
+    @GetMapping(value = "/section/{name}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-    public Section findByMac(@PathVariable String id) {
-        return repository.findById(id).orElseThrow();
+    public Section findByMac(@PathVariable String name) {
+        return repository.findByName(name).orElseThrow();
     }
 
-    @PutMapping(value = "/section/{id}")
+    @PutMapping(value = "/section/{name}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Section updateByMac(@PathVariable String id, @RequestBody Section section) {
-        return repository.updateById(id, section);
+    public Section updateByName(@PathVariable String name, @RequestBody Section section) {
+        return repository.updateByName(name, section);
     }
 
     @PostMapping(value = "/section")
     @PreAuthorize("hasRole('ADMIN')")
-    public Section saveSectionById(@RequestBody Section section) {
-        return repository.save(new Section(section.id(), section.departmentId(), section.name(),
-                section.x1(), section.x2(), section.y1(), section.y2()));
+    public Section saveSectionByName(@RequestBody Section section) {
+        return repository.save(new Section(section.name(), section.x1(), section.y1(), section.x2(), section.y2()));
     }
 
-    @DeleteMapping(value = "/section/{id}")
+    @DeleteMapping(value = "/section/{name}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void deleteById(@PathVariable String id) {
-        repository.delete(repository.findById(id).orElseThrow());
+    public void deleteById(@PathVariable String name) {
+        repository.delete(repository.findByName(name).orElseThrow());
     }
 }

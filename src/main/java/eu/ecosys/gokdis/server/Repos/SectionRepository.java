@@ -9,21 +9,17 @@ import java.util.UUID;
 
 public interface SectionRepository extends CrudRepository<Section, UUID> {
 
-    Optional<Section> findById(String id);
+    Optional<Section> findByName(String name);
 
-
-    default Section updateById(String id, Section updatedSection) {
-        return findById(id).map(existingSection -> {
+    default Section updateByName(String name, Section updatedSection) {
+        return findByName(name).map(existingSection -> {
             Section updatedRecord = new Section(
-                    existingSection.id(),
-                    updatedSection.departmentId() != null ? updatedSection.departmentId() : existingSection.departmentId(),
-                    updatedSection.name() != null ? updatedSection.name() : existingSection.name(),
+                    existingSection.name(),
                     updatedSection.x1(),
-                    updatedSection.x2(),
                     updatedSection.y1(),
-                    updatedSection.y2()
-            );
+                    updatedSection.x2(),
+                    updatedSection.y2());
             return save(updatedRecord);
-        }).orElseThrow(() -> new NoSuchElementException("Section not found with id: " + id));
+        }).orElseThrow(() -> new NoSuchElementException("Section not found with name: " + name));
     }
 }
