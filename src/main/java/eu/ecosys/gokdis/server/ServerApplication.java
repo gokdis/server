@@ -25,7 +25,7 @@ public class ServerApplication {
         return args -> {
             personRepository.deleteAll();
             personRepository.save(new Person(
-                    "helen@ieu.edu.tr",
+                    "helen@gokdis.ecosys.eu",
                     passwordEncoder.encode("helen"),
                     "ROLE_ADMIN",
                     "Helen",
@@ -33,7 +33,7 @@ public class ServerApplication {
                     17,
                     "Female"));
             personRepository.save(new Person(
-                    "kerberos@ieu.edu.tr",
+                    "kerberos@gokdis.ecosys.eu",
                     passwordEncoder.encode("kerberos"),
                     "ROLE_MOD",
                     "kerberos",
@@ -41,7 +41,7 @@ public class ServerApplication {
                     18,
                     "Male"));
             personRepository.save(new Person(
-                    "paris@ieu.edu.tr",
+                    "paris@gokdis.ecosys.eu",
                     passwordEncoder.encode("paris"),
                     "ROLE_USER",
                     "Paris",
