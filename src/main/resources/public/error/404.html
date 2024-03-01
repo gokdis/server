@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Error Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" media="screen" type="text/css" href="https://www.ieu.edu.tr/css/hata.css" />
+    <script type="text/javascript" src="https://www.ieu.edu.tr/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            num = Math.floor(Math.random() * 5 + 1);
+            $("body").css('background', 'url(\'https://www.ieu.edu.tr/images/error_bg' + num + '.jpg\') no-repeat center center fixed');
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bgimage"></div>
+        <div class="box">
+            <div class="innerbox">
+                <img src="https://www.ieu.edu.tr/images/logotr.png" />
+                <br>
+                <h1><span style="font-weigth:bold; color:#ff9933;">Error : </span>Language parameter is incorrect or the
+                    requested page could not be found</h1>
+                <div style="font-size:12px; margin-top:40px;">
+                    The page that you are trying to reach is either currently unavailable or no longer exists. Please
+                    check the URL to ensure that the path is correct and contact the webmaster (<a
+                        href="mailto:webmaster@gokdis.ecosys.eu">webmaster@gokdis.ecosys.eu</a>) if this problem
+                    persists.
+                </div>
+                <br>
+                <a href="https://gokdis.ecosys.eu/">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
