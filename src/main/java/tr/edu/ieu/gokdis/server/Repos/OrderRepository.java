@@ -14,7 +14,7 @@ public interface OrderRepository extends CrudRepository<Order, UUID> {
         return findById(id).map(existingOrder -> {
             Order updatedRecord = new Order(
                     existingOrder.id(),
-                    updatedOrder.customerId() != null ? updatedOrder.customerId() : existingOrder.customerId(),
+                    updatedOrder.personId() != null ? updatedOrder.personId() : existingOrder.personId(),
                     updatedOrder.productId() != null ? updatedOrder.productId() : existingOrder.productId(),
                     updatedOrder.description() != null ? updatedOrder.description() : existingOrder.description(),
                     updatedOrder.quantity(),

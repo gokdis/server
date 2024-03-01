@@ -14,6 +14,7 @@ public interface BeaconRepository extends CrudRepository<Beacon, UUID> {
         return findByMac(mac).map(existingBeacon -> {
             Beacon updatedRecord = new Beacon(
                     existingBeacon.mac(),
+                    updatedBeacon.id(),
                     updatedBeacon.x(),
                     updatedBeacon.y()
 

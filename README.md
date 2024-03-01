@@ -1,43 +1,51 @@
 # server
 
 ## Prerequisities
+
 * Debian GNU/Linux
 
 [https://www.debian.org/](https://www.debian.org/releases/stable/installmanual)
+
 * Get OpenJDK 17
 
 ```sh
 sudo apt install default-jdk
 ```
+
 * Get Docker
 
 ```sh
 sudo apt install docker && sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker
 ```
+
 * Get Cassandra using Docker
 
 ```sh
 docker pull cassandra && docker network create cassandra
 ```
+
 * Update hosts
 
 ```sh
-echo '127.0.0.1    gokdis.erke.biz.tr' | sudo tee -a /etc/hosts
+echo '127.0.0.1 gokdis.ecosys.eu' | sudo tee -a /etc/hosts
 ```
+
 ## Quickstart
+
 * Start Cassandra
 
 ```sh
 docker run --rm -d --name cassandra --hostname cassandra --network cassandra cassandra
 ```
+
 * Start Spring Boot
 
 ```sh
 ./mvnw clean spring-boot:run
 ```
-* Log in at [https://gokdis.mooo.com:8443/](https://gokdis.mooo.com:8443/login)
 
-## 
+* Log in at [https://gokdis.ecosys.eu/](https://gokdis.ecosys.eu/login)
+
 ## Endpoint Examples
 
 ### Person

@@ -1,7 +1,5 @@
 package tr.edu.ieu.gokdis.server;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,10 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import tr.edu.ieu.gokdis.server.Repos.PersonRepository;
+
 @SpringBootApplication
 public class ServerApplication {
-    private static final Log LOG = LogFactory.getLog(ServerApplication.class);
-
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public static void main(String[] args) {
@@ -24,30 +22,32 @@ public class ServerApplication {
     public CommandLineRunner savePeople(PersonRepository personRepository) {
         return args -> {
             personRepository.deleteAll();
-        
             personRepository.save(new Person(
-                "helen@ieu.edu.tr", 
-                passwordEncoder.encode("helen"), 
-                "ROLE_ADMIN",
-                "Helen", 
-                17, 
-                "Female", 
-                "Doe" 
-            ));
+                    "helen@ieu.edu.tr",
+                    passwordEncoder.encode("helen"),
+                    "ROLE_ADMIN",
+                    "Helen",
+                    "of Troy",
+                    17,
+                    "Female"));
             personRepository.save(new Person(
-                "paris@ieu.edu.tr", 
-                passwordEncoder.encode("paris"), 
-                "ROLE_USER",
-                "Paris", 
-                18, 
-                "Male", 
-                "Smith" 
-            ));
-        
-            personRepository.findAll()
-                .forEach(p -> LOG.info(p.toString())); 
+                    "kerberos@ieu.edu.tr",
+                    passwordEncoder.encode("kerberos"),
+                    "ROLE_MOD",
+                    "kerberos",
+                    "of Tartarus",
+                    18,
+                    "Male"));
+            personRepository.save(new Person(
+                    "paris@ieu.edu.tr",
+                    passwordEncoder.encode("paris"),
+                    "ROLE_USER",
+                    "Paris",
+                    "of Troy",
+                    19,
+                    "Male"));
         };
-        
+
     }
 
     @Bean

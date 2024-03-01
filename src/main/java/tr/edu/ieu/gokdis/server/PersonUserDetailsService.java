@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import tr.edu.ieu.gokdis.server.Repos.PersonRepository;
+
 @Service
 public class PersonUserDetailsService implements UserDetailsService {
     @Autowired
