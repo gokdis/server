@@ -1,16 +1,14 @@
 package eu.ecosys.gokdis.server.Repos;
 
-import eu.ecosys.gokdis.server.Position;
-import org.springframework.data.repository.CrudRepository;
-
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
 
-public interface PositionRepository extends CrudRepository<Position, UUID> {
-    Optional<Position> findById(String id);
+import org.springframework.data.repository.CrudRepository;
 
-    default Position updateById(String id, Position updatedPosition) {
+import eu.ecosys.gokdis.server.Position;
+
+public interface PositionRepository extends CrudRepository<Position, UUID> {
+    default Position updateById(UUID id, Position updatedPosition) {
         return findById(id).map(existingOrder -> {
             Position updatedRecord = new Position(
                     existingOrder.id(),

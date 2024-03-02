@@ -2,6 +2,9 @@ package eu.ecosys.gokdis.server.Controllers;
 
 import eu.ecosys.gokdis.server.Position;
 import eu.ecosys.gokdis.server.Repos.PositionRepository;
+
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,13 +30,13 @@ public class PositionController {
 
     @GetMapping(value = "/position/{id}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-    public Position findById(@PathVariable String id) {
+    public Position findById(@PathVariable UUID id) {
         return repository.findById(id).orElseThrow();
     }
 
     @PutMapping(value = "/position/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Position updateById(@PathVariable String id, @RequestBody Position position) {
+    public Position updateById(@PathVariable UUID id, @RequestBody Position position) {
         return repository.updateById(id, position);
     }
 
@@ -48,7 +51,7 @@ public class PositionController {
 
     @DeleteMapping(value = "/position/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void deleteById(@PathVariable String id) {
+    public void deleteById(@PathVariable UUID id) {
         repository.delete(repository.findById(id).orElseThrow());
     }
 }

@@ -1,5 +1,7 @@
 package eu.ecosys.gokdis.server.Controllers;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,19 +30,19 @@ public class ProductController {
 
     @GetMapping(value = "/product/{id}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-    public Product findById(@PathVariable String id) {
+    public Product findById(@PathVariable UUID id) {
         return repository.findById(id).orElseThrow();
     }
 
     @PutMapping(value = "/product/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Product updateById(@PathVariable String id, @RequestBody Product product) {
+    public Product updateById(@PathVariable UUID id, @RequestBody Product product) {
         return repository.updateById(id, product);
     }
 
     @PostMapping(value = "/product")
     @PreAuthorize("hasRole('ADMIN')")
-    public Product saveProductById(@RequestBody Product product) {
+    public Product save(@RequestBody Product product) {
         return repository.save(new Product(
                 product.id(), product.sectionId(),
                 product.name(), product.description(),
@@ -49,7 +51,7 @@ public class ProductController {
 
     @DeleteMapping(value = "/product/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void deleteById(@PathVariable String id) {
+    public void delete(@PathVariable UUID id) {
         repository.delete(repository.findById(id).orElseThrow());
     }
 }
