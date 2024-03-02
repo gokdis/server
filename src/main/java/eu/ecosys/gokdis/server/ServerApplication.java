@@ -1,7 +1,6 @@
 package eu.ecosys.gokdis.server;
 
-import java.util.UUID;
-
+import eu.ecosys.gokdis.server.Repos.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import eu.ecosys.gokdis.server.Repos.MatrixRepository;
-import eu.ecosys.gokdis.server.Repos.PersonRepository;
-import eu.ecosys.gokdis.server.Repos.SectionRepository;
 
 @SpringBootApplication
 public class ServerApplication {
@@ -51,27 +46,7 @@ public class ServerApplication {
                     19,
                     "Male"));
         };
-    }
 
-    @Bean
-    public CommandLineRunner saveSections(SectionRepository sectionRepository) {
-        return args -> {
-            sectionRepository.deleteAll();
-            sectionRepository
-                    .save(new Section(UUID.fromString("d9c3a803-a73c-405e-bc04-f902e8df0590"), "Frozen Vegetables"));
-        };
-    }
-
-    @Bean
-    public CommandLineRunner saveMatrices(MatrixRepository matrixRepository) {
-        return args -> {
-            matrixRepository.deleteAll();
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 5; j++) {
-                    matrixRepository.save(new Matrix(i, j, UUID.fromString("d9c3a803-a73c-405e-bc04-f902e8df0590")));
-                }
-            }
-        };
     }
 
     @Bean
@@ -79,7 +54,7 @@ public class ServerApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:5173");
+                registry.addMapping("/**").allowedOrigins("http://localhost:5173").allowedMethods("GET", "PUT", "DELETE", "POST");
             }
         };
     }
