@@ -57,7 +57,7 @@ GET(ONE) localhost:8080/api/v1/person/can@ieu.edu.tr
 PUT localhost:8080/api/v1/person/can@ieu.edu.tr
 
 Body Example in JSON:
-
+```sh
 {
     "email": "can@ieu.edu.tr",
     "password": "hey",
@@ -65,11 +65,11 @@ Body Example in JSON:
     "name": null,
     "age": 0
 }
-
+```
 POST localhost:8080/api/v1/person
 
 Body Example in JSON:
-
+```sh
 {
     "email": "can@ieu.edu.tr",
     "password": "123",
@@ -77,7 +77,7 @@ Body Example in JSON:
     "name": null,
     "age": 0 
 }
-
+```
 DELETE localhost:8080/api/v1/person/can@ieu.edu.tr
 
 ## Beacon
@@ -89,23 +89,23 @@ GET(ONE) localhost:8080/api/v1/person/123
 PUT localhost:8080/api/v1/beacon/123
 
 Body Example in JSON:
-
+```sh
 {
     "mac": "123",
     "x": 1,
     "y": 2
 }
-
+```
 POST localhost:8080/api/v1/beacon
 
 Body Example in JSON:
-
+```sh
 {
     "mac": "123",
     "x": 1,
     "y": 2
 }
-
+```
 DELETE localhost:8080/api/v1/beacon/123
 
 ### Department
@@ -117,21 +117,21 @@ GET(ONE) localhost:8080/api/v1/department/3931227c-667a-4df7-a950-d49d62368c66
 PUT localhost:8080/api/v1/department/3931227c-667a-4df7-a950-d49d62368c66
 
 Body Example in JSON:
-
+```sh
 {
     "id":"3931227c-667a-4df7-a950-d49d62368c66",
     "name":"asd"
 }
-
+```
 POST localhost:8080/api/v1/department
 
 Body Example in JSON:
-
+```sh
 {
     "id":"3931227c-667a-4df7-a950-d49d62368c66",
     "name":"asd"
 }
-
+```
 DELETE localhost:8080/api/v1/department/3931227c-667a-4df7-a950-d49d62368c66
 
 ### Order
@@ -143,7 +143,7 @@ GET(ONE) localhost:8080/api/v1/order/3931227c-667a-4df7-a950-d49d62368c66
 PUT localhost:8080/api/v1/order/3931227c-667a-4df7-a950-d49d62368c66
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "customerId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -152,11 +152,11 @@ Body Example in JSON:
     "quantity": 0,
     "time": null
 }
-
+```
 POST localhost:8080/api/v1/order
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "customerId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -165,7 +165,7 @@ Body Example in JSON:
     "quantity": 0,
     "time": null
 }
-
+```
 DELETE localhost:8080/api/v1/order/3931227c-667a-4df7-a950-d49d62368c66
 
 ### Position
@@ -177,7 +177,7 @@ GET(ONE) localhost:8080/api/v1/position/3931227c-667a-4df7-a950-d49d62368c66
 PUT localhost:8080/api/v1/position/3931227c-667a-4df7-a950-d49d62368c66
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "customerId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -185,11 +185,11 @@ Body Example in JSON:
     "y": 0,
     "time": null
 }
-
+```
 POST localhost:8080/api/v1/position
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "customerId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -197,7 +197,7 @@ Body Example in JSON:
     "y": 0,
     "time": null
 }
-
+```
 DELETE localhost:8080/api/v1/position/3931227c-667a-4df7-a950-d49d62368c66
 
 ### Product
@@ -209,7 +209,7 @@ GET(ONE) localhost:8080/api/v1/product/3931227c-667a-4df7-a950-d49d62368c66
 PUT localhost:8080/api/v1/product/3931227c-667a-4df7-a950-d49d62368c66
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "sectionId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -218,11 +218,11 @@ Body Example in JSON:
     "stock": 0,
     "price": 0.0
 }
-
+```
 POST localhost:8080/api/v1/product
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "sectionId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -231,7 +231,7 @@ Body Example in JSON:
     "stock": 0,
     "price": 0.0
 }
-
+```
 DELETE localhost:8080/api/v1/product/3931227c-667a-4df7-a950-d49d62368c66
 
 ### Section
@@ -243,7 +243,7 @@ GET(ONE) localhost:8080/api/v1/section/3931227c-667a-4df7-a950-d49d62368c66
 PUT localhost:8080/api/v1/section/3931227c-667a-4df7-a950-d49d62368c66
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "departmentId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -253,11 +253,11 @@ Body Example in JSON:
     "x2": 0,
     "y2": 0
 }
-
+```
 POST localhost:8080/api/v1/section
 
 Body Example in JSON:
-
+```sh
 {
     "id": "3931227c-667a-4df7-a950-d49d62368c66",
     "departmentId": "3931227c-667a-4df7-a950-d49d62368c66",
@@ -267,5 +267,7 @@ Body Example in JSON:
     "x2": 0,
     "y2": 0
 }
-
+```
 DELETE localhost:8080/api/v1/section/3931227c-667a-4df7-a950-d49d62368c66
+
+api/v1/sections?userX=6&userY=1 Collision Check
