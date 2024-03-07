@@ -1,9 +1,11 @@
-package eu.ecosys.gokdis.server.Repos;
+package eu.ecosys.gokdis.server.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import eu.ecosys.gokdis.server.Product;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+
+import org.springframework.data.repository.CrudRepository;
+
+import eu.ecosys.gokdis.server.entity.Product;
 
 public interface ProductRepository extends CrudRepository<Product, UUID> {
     default Product updateById(UUID id, Product updatedProduct) {

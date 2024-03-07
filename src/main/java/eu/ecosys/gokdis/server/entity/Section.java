@@ -1,4 +1,4 @@
-package eu.ecosys.gokdis.server;
+package eu.ecosys.gokdis.server.entity;
 
 import java.util.UUID;
 

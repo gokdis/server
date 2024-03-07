@@ -1,11 +1,12 @@
-package eu.ecosys.gokdis.server.Repos;
-
-import eu.ecosys.gokdis.server.Beacon;
-import org.springframework.data.repository.CrudRepository;
+package eu.ecosys.gokdis.server.repository;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.springframework.data.repository.CrudRepository;
+
+import eu.ecosys.gokdis.server.entity.Beacon;
 
 public interface BeaconRepository extends CrudRepository<Beacon, UUID> {
     Optional<Beacon> findByMac(String mac);

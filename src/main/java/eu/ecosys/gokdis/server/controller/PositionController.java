@@ -1,4 +1,4 @@
-package eu.ecosys.gokdis.server.Controllers;
+package eu.ecosys.gokdis.server.controller;
 
 import java.util.UUID;
 
@@ -13,45 +13,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import eu.ecosys.gokdis.server.Product;
-import eu.ecosys.gokdis.server.Repos.ProductRepository;
+import eu.ecosys.gokdis.server.entity.Position;
+import eu.ecosys.gokdis.server.repository.PositionRepository;
 
 @RestController
 @RequestMapping("api/v1")
-public class ProductController {
+public class PositionController {
     @Autowired
-    private ProductRepository repository;
+    private PositionRepository repository;
 
-    @GetMapping(value = "/product")
+    @GetMapping(value = "/position")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-    public Iterable<Product> findAll() {
+    public Iterable<Position> findAll() {
         return repository.findAll();
     }
 
-    @GetMapping(value = "/product/{id}")
+    @GetMapping(value = "/position/{id}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-    public Product findById(@PathVariable UUID id) {
+    public Position findById(@PathVariable UUID id) {
         return repository.findById(id).orElseThrow();
     }
 
-    @PutMapping(value = "/product/{id}")
+    @PutMapping(value = "/position/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public Product updateById(@PathVariable UUID id, @RequestBody Product product) {
-        return repository.updateById(id, product);
+    public Position updateById(@PathVariable UUID id, @RequestBody Position position) {
+        return repository.updateById(id, position);
     }
 
-    @PostMapping(value = "/product")
+    @PostMapping(value = "/position")
     @PreAuthorize("hasRole('ADMIN')")
-    public Product save(@RequestBody Product product) {
-        return repository.save(new Product(
-                product.id(), product.sectionId(),
-                product.name(), product.description(),
-                product.stock(), product.price()));
+    public Position savePositionById(@RequestBody Position position) {
+        return repository.save(new Position(
+                position.id(), position.customerId(),
+                position.x(), position.y(),
+                position.time()));
     }
 
-    @DeleteMapping(value = "/product/{id}")
+    @DeleteMapping(value = "/position/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void delete(@PathVariable UUID id) {
+    public void deleteById(@PathVariable UUID id) {
         repository.delete(repository.findById(id).orElseThrow());
     }
 }

@@ -1,4 +1,4 @@
-package eu.ecosys.gokdis.server.Controllers;
+package eu.ecosys.gokdis.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import eu.ecosys.gokdis.server.Person;
-import eu.ecosys.gokdis.server.Repos.PersonRepository;
+import eu.ecosys.gokdis.server.entity.Person;
+import eu.ecosys.gokdis.server.repository.PersonRepository;
 
 @RestController
 @RequestMapping("api/v1")

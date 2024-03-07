@@ -1,4 +1,4 @@
-package eu.ecosys.gokdis.server.Controllers;
+package eu.ecosys.gokdis.server.controller;
 
 import java.util.UUID;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import eu.ecosys.gokdis.server.Section;
-import eu.ecosys.gokdis.server.Repos.SectionRepository;
+import eu.ecosys.gokdis.server.entity.Section;
+import eu.ecosys.gokdis.server.repository.SectionRepository;
 
 @RestController
 @RequestMapping("api/v1")

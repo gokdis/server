@@ -14,7 +14,6 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 @Configuration
 @EnableCassandraRepositories
 public class CassandraConfiguration extends AbstractCassandraConfiguration {
-
     @Value("${cassandra.contactpoints}")
     private String contactPoints;
 

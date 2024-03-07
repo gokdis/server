@@ -1,11 +1,12 @@
-package eu.ecosys.gokdis.server.Repos;
-
-import org.springframework.data.repository.CrudRepository;
-import eu.ecosys.gokdis.server.Order;
+package eu.ecosys.gokdis.server.repository;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
+
+import org.springframework.data.repository.CrudRepository;
+
+import eu.ecosys.gokdis.server.entity.Order;
 
 public interface OrderRepository extends CrudRepository<Order, UUID> {
     Optional<Order> findById(String id);

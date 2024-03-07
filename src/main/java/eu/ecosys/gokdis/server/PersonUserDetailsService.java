@@ -9,7 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import eu.ecosys.gokdis.server.Repos.PersonRepository;
+import eu.ecosys.gokdis.server.entity.Person;
+import eu.ecosys.gokdis.server.repository.PersonRepository;
 
 @Service
 public class PersonUserDetailsService implements UserDetailsService {
