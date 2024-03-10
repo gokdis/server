@@ -7,5 +7,5 @@ import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 @Table
-public record Matrix(@PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED) int x, @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED) int y, UUID sectionId) {
+public record Cell(@PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED) int x, @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED) int y, UUID sectionId) {
 }

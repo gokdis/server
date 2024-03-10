@@ -21,7 +21,7 @@ public class SectionController {
     @Autowired
     private SectionRepository sectionRepository;
 
-    @GetMapping(value = "/section/all")
+    @GetMapping(value = "/section")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Iterable<Section> findAll() {
         return sectionRepository.findAll();

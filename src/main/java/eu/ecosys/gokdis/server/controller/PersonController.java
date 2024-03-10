@@ -32,7 +32,7 @@ public class PersonController {
     @GetMapping(value = "/person/{email}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Person findByEmail(@PathVariable String email) {
-        return repository.findByEmail(email).orElseThrow();
+        return repository.findByEmail(email).get();
     }
 
     @PutMapping(value = "/person/{email}")
@@ -42,8 +42,7 @@ public class PersonController {
     }
 
     @PostMapping(value = "/person")
-    @PreAuthorize("hasRole('ADMIN')")
-    public Person savePersonByEmail(@RequestBody Person person) {
+    public Person save(@RequestBody Person person) {
         return repository.save(new Person(
                 person.email(),
                 passwordEncoder.encode(person.password()),
@@ -56,7 +55,7 @@ public class PersonController {
 
     @DeleteMapping(value = "/person/{email}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void deleteByEmail(@PathVariable String email) {
-        repository.delete(repository.findByEmail(email).orElseThrow());
+    public void delete(@PathVariable String email) {
+        repository.delete(repository.findByEmail(email).get());
     }
 }
