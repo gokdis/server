@@ -41,7 +41,19 @@ docker run --rm -d --name cassandra --hostname cassandra --network cassandra cas
 * Start Spring Boot
 
 ```sh
-./mvnw clean spring-boot:run
+./mvnw clean spring-boot:run # or run ServerApplication.java on Eclipse Theia
+```
+
+* Run tests
+
+```sh
+mvn clean test
+```
+
+* Build
+
+```sh
+mvn clean package
 ```
 
 * Log in at [https://gokdis.ecosys.eu/](https://gokdis.ecosys.eu/login)
