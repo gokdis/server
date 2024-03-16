@@ -18,4 +18,19 @@ class KarateTests {
     Karate personTest() {
         return Karate.run("person").relativeTo(getClass());
     }
+
+    @Karate.Test
+    Karate beaconTest() {
+        return Karate.run("beacon").relativeTo(getClass());
+    }
+
+    @Karate.Test
+    Karate cellTest() {
+        return Karate.run("cell").relativeTo(getClass());
+    }
+
+    @Karate.Test
+    Karate sectionTest() {
+        return Karate.run("section").relativeTo(getClass());
+    }
 }
