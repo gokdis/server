@@ -138,6 +138,11 @@ INSERT INTO Section (id, name) VALUES (03d95e3b-556a-4800-8979-ed92e0083754, 'Po
 INSERT INTO Section (id, name) VALUES (7223d7cb-3169-490f-9700-e4fce904a451, 'Frozen Promotions');
 INSERT INTO Section (id, name) VALUES (49cb9231-0001-45fb-850d-3df9a7b16f2a, 'Customer Service');
 
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (2074832f-8dff-4c79-b342-e5fa35db0d58, 5de7b96e-8b47-4194-84a9-4af579dee168,'new product','new',40,2);
+
+INSERT INTO CustomerOrder (id, personEmail, productId , description, quantity, time) VALUES (e9b95f60-49ba-4be6-b565-420a262b840f, 'helen@gokdis.ecosys.eu', fb711ca3-17b0-4094-864a-ce02fde0e853, 'new product', 40, toTimestamp(now()));
+
+
 
 INSERT INTO Cell (x, y, sectionId) VALUES (176, 128, fb711ca3-17b0-4094-864a-ce02fde0e852);
 INSERT INTO Cell (x, y, sectionId) VALUES (208, 144, fb711ca3-17b0-4094-864a-ce02fde0e852);

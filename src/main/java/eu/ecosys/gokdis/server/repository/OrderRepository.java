@@ -4,18 +4,17 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
+import eu.ecosys.gokdis.server.entity.CustomerOrder;
 import org.springframework.data.repository.CrudRepository;
 
-import eu.ecosys.gokdis.server.entity.Order;
+public interface OrderRepository extends CrudRepository<CustomerOrder, UUID> {
+    Optional<CustomerOrder> findById(String id);
 
-public interface OrderRepository extends CrudRepository<Order, UUID> {
-    Optional<Order> findById(String id);
-
-    default Order updateById(String id, Order updatedOrder) {
+    default CustomerOrder updateById(String id, CustomerOrder updatedOrder) {
         return findById(id).map(existingOrder -> {
-            Order updatedRecord = new Order(
+            CustomerOrder updatedRecord = new CustomerOrder(
                     existingOrder.id(),
-                    updatedOrder.personId() != null ? updatedOrder.personId() : existingOrder.personId(),
+                    updatedOrder.personEmail() != null ? updatedOrder.personEmail() : existingOrder.personEmail(),
                     updatedOrder.productId() != null ? updatedOrder.productId() : existingOrder.productId(),
                     updatedOrder.description() != null ? updatedOrder.description() : existingOrder.description(),
                     updatedOrder.quantity(),

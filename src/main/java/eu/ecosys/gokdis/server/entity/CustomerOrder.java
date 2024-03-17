@@ -7,5 +7,5 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 @Table
-public record Order(@PrimaryKey UUID id, UUID personId, UUID productId, String description, int quantity, Timestamp time) {
+public record CustomerOrder(@PrimaryKey UUID id, String personEmail, UUID productId, String description, int quantity, Timestamp time) {
 }
