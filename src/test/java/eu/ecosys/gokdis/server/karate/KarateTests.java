@@ -38,4 +38,9 @@ class KarateTests {
     Karate productTest() {
         return Karate.run("product").relativeTo(getClass());
     }
+
+    @Karate.Test
+    Karate orderTest() {
+        return Karate.run("order").relativeTo(getClass());
+    }
 }
