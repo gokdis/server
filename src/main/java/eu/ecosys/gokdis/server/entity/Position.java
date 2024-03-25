@@ -7,5 +7,5 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 @Table
-public record Position(@PrimaryKey UUID id, UUID customerId, int x, int y, Timestamp time) {
+public record Position(@PrimaryKey UUID id, String personEmail, int x, int y, Timestamp time) {
 }

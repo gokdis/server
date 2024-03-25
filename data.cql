@@ -122,27 +122,87 @@ INSERT INTO Section (id, name) VALUES (98e916e3-f6da-4e2c-8537-8fc63872512f, 'Pa
 INSERT INTO Section (id, name) VALUES (1c292782-1120-4498-aedf-873b45b29046, 'Bagged Onions');
 INSERT INTO Section (id, name) VALUES (f3853589-d1be-4eb1-b4b1-18cdaa78c63e, 'Mangoes & Bananas');
 INSERT INTO Section (id, name) VALUES (63cd2dcd-e1b3-4b53-98c5-dc079db97fcc, 'Garlic & Onions');
-INSERT INTO Section (id, name) VALUES (2d69e9b6-f927-4732-8a97-93a27691ede8, 'Tomatoes & Avacados');
-INSERT INTO Section (id, name) VALUES (53cc11d0-4014-42c0-ac0f-42b7e84a9e7a, 'Bagged Apples & Citrus');
-INSERT INTO Section (id, name) VALUES (d1fb5bbc-e358-4039-8ce0-f2f4ef8f328f, 'Citrus & Melons');
-INSERT INTO Section (id, name) VALUES (4816bbae-6670-4253-a47f-e7eac1f32b2b, 'Promo Fruits & Veggies');
-INSERT INTO Section (id, name) VALUES (c31db0cc-e796-44b8-8239-6c9a3cc51e95, 'Nuts');
-INSERT INTO Section (id, name) VALUES (5134cede-8ca7-4e15-ab3d-64362b495d48, 'Mushrooms');
-INSERT INTO Section (id, name) VALUES (8932701b-9b18-4818-8e7d-d92667a3a59a, 'Peppers');
-INSERT INTO Section (id, name) VALUES (dc41e23f-9919-498e-a894-883640033a05, 'Lettuce');
-INSERT INTO Section (id, name) VALUES (4f12f98e-cb83-4231-957b-1ba2a492eedd, 'Carrots');
-INSERT INTO Section (id, name) VALUES (b312ddc6-7af5-4411-94d1-9ac74d4cefc6, 'Packaged Salad');
-INSERT INTO Section (id, name) VALUES (dbd8bb0c-95ec-4794-9d14-3618b3698ca1, 'Organic');
-INSERT INTO Section (id, name) VALUES (424f7521-4954-40f4-8091-3c1706d30b82, 'Apples');
-INSERT INTO Section (id, name) VALUES (03d95e3b-556a-4800-8979-ed92e0083754, 'Potting Soils');
-INSERT INTO Section (id, name) VALUES (7223d7cb-3169-490f-9700-e4fce904a451, 'Frozen Promotions');
-INSERT INTO Section (id, name) VALUES (49cb9231-0001-45fb-850d-3df9a7b16f2a, 'Customer Service');
-
-INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (2074832f-8dff-4c79-b342-e5fa35db0d58, 5de7b96e-8b47-4194-84a9-4af579dee168,'new product','new',40,2);
+INSERT INTO Section (id, name) VALUES (2d69e9b6-f927-4732-8a97-93a27691ede8, 'Tomatoes & Avacados')
+INSERT INTO Section (id, name) VALUES (53cc11d0-4014-42c0-ac0f-42b7e84a9e7a, 'Bagged Apples & Citrus')
+INSERT INTO Section (id, name) VALUES (d1fb5bbc-e358-4039-8ce0-f2f4ef8f328f, 'Citrus & Melons')
+INSERT INTO Section (id, name) VALUES (4816bbae-6670-4253-a47f-e7eac1f32b2b, 'Promo Fruits & Veggies')
+INSERT INTO Section (id, name) VALUES (c31db0cc-e796-44b8-8239-6c9a3cc51e95, 'Nuts')
+INSERT INTO Section (id, name) VALUES (5134cede-8ca7-4e15-ab3d-64362b495d48, 'Mushrooms')
+INSERT INTO Section (id, name) VALUES (8932701b-9b18-4818-8e7d-d92667a3a59a, 'Peppers')
+INSERT INTO Section (id, name) VALUES (dc41e23f-9919-498e-a894-883640033a05, 'Lettuce')
+INSERT INTO Section (id, name) VALUES (4f12f98e-cb83-4231-957b-1ba2a492eedd, 'Carrots')
+INSERT INTO Section (id, name) VALUES (b312ddc6-7af5-4411-94d1-9ac74d4cefc6, 'Packaged Salad')
+INSERT INTO Section (id, name) VALUES (dbd8bb0c-95ec-4794-9d14-3618b3698ca1, 'Organic')
+INSERT INTO Section (id, name) VALUES (424f7521-4954-40f4-8091-3c1706d30b82, 'Apples')
+INSERT INTO Section (id, name) VALUES (03d95e3b-556a-4800-8979-ed92e0083754, 'Potting Soils')
+INSERT INTO Section (id, name) VALUES (7223d7cb-3169-490f-9700-e4fce904a451, 'Frozen Promotions')
+INSERT INTO Section (id, name) VALUES (49cb9231-0001-45fb-850d-3df9a7b16f2a, 'Customer Service')
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (7a8b8d71-ee3e-4a05-9241-24e001b73852, 2c95bf8a-62f0-49e4-bb1e-8ffa6e18a8f3, 'Facial Tissue', 'Soft and gentle facial tissues', 100, 1.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (3ed8ef8d-d874-4c6f-8711-0eb96b4c54c5, fad31fa8-953d-4d94-95a8-e2298e6ebcff, 'Extra Soft Toilet Paper', 'Comfortable and absorbent toilet paper', 200, 3.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (904f16e7-92b7-4a97-a0fd-4580843427af, 9c1f51cf-9168-4b35-81b7-9db253b94e8c, 'Strong Paper Towels', 'Durable and absorbent paper towels', 150, 2.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (cc9c8f51-45d8-4fa8-b7c7-dc10e3e3b4a2, 732597d2-5e8c-4844-8b7f-39e3c2bfcdaf, 'Assorted Packaged Meat', 'Variety pack of quality meats', 50, 15.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (fd542d1d-9b45-48ac-9b6f-0e9d6e3d0ac4, c391e007-7785-4645-bfc4-2d0923bc0f57, 'Hickory Smoked Bacon', 'Rich and flavorful smoked bacon', 75, 6.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (83fbd7b6-6cfb-4c94-ba9a-8b3d79179e84, a03ef8ef-720f-4c7b-9683-64d90b5796fa, 'Whole Chickens', 'Fresh whole chickens ready to cook', 30, 9.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (05e4bf6a-19f5-49d8-8d7d-26be01562850, e09ebcfd-75c1-4cbf-88a7-4a523e75a32f, 'Frozen Baguettes', 'French-style baguettes ready to bake', 40, 3.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (a875c70b-c5ed-43fc-8fc9-7d95b85d9e01, a16a5a34-e51d-4d46-ad87-8b4480c0217a, 'Chocolate Fudge Cake', 'Indulgent chocolate cake for dessert', 20, 12.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (1b3fe663-036e-4e80-8536-d5880ddcc7fc, 0af22413-05e4-46ec-a5ba-a974fe69bc16, 'Promotional Snacks Pack', 'Assorted snacks at a discounted price', 100, 8.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (2b1c3e36-5299-4744-a0a1-314c3a5d3d43, 2bc20f6e-f291-49dc-8ef1-235366495aae, 'Whole Grain Bagels', 'Healthy and delicious whole grain bagels', 50, 4.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (ce689c97-787a-4793-a587-6a68c5d53cf3, dbed5d33-245e-418d-9d1e-08a907637f29, 'Halal Chicken Breast', 'Certified halal chicken breast', 80, 7.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (f1e5d0d0-89f7-4485-ae6b-4b82da30cf39, 733a6e87-8d5a-4beb-8432-b6c8ecc820dc, 'Breaded Frozen Fish Fillets', 'Quick and easy meal option', 40, 10.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (832a26b2-82c3-485e-8fa0-36de9242cc7f, 91e411c7-d894-4fea-b47b-aca4155b313f, 'Boxed Pork Chops', 'Conveniently packaged pork chops', 25, 14.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (4b0a1f9e-3f4c-4df9-a86f-9a7c3507b170, 6ddc89ab-71de-418c-87c8-bf5897f6b36d, 'Assorted Hors D''Oeuvres', 'Perfect for entertaining guests', 50, 19.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (a7e92d33-c046-4f5a-8d2f-002de73e1266, f8bdf5a0-704f-41e0-b98b-cd718d13d102, 'Assorted Packaged Deli Meats', 'Variety pack of deli meats', 30, 17.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (3a3d1d46-b1ef-4154-b88c-035d16e46ac2, cd736950-adc2-4e09-9f14-5b2ececf6879, 'Organic Baby Food Pouches', 'Healthy and nutritious baby food', 60, 2.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (1b1b3c67-3ae8-47d4-82c0-b0f75ab3a7b5, d054cf1b-1818-45e1-bdfa-bbe46ed2e4de, 'Mint Toothpaste', 'Refreshing mint toothpaste for clean teeth', 100, 4.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (f0f4604e-9d2b-422e-9fc0-20a97acaa013, 25d960a8-a7e6-434d-bd57-984b9fbaad10, 'Sensitive Skin Baby Diapers', 'Gentle diapers for sensitive skin', 200, 29.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (1fb7c6bb-5c90-4d26-bbcb-5af6efc6a692, e939e624-04c3-4284-a934-afc348f7c7d2, 'Salmon Flavor Cat Food', 'Delicious salmon-flavored cat food', 50, 7.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (6dd97df5-b86e-4c07-a4f4-f4df1c0143e9, 956db47a-a5ec-4e57-bf2f-620b9ce0f24d, 'Clumping Cat Litter', 'Easy-to-clean clumping cat litter', 100, 12.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (234a385d-9cf6-47e1-89c6-48a325b9924c, 402b8b96-f251-41cd-a0c8-c1e1bf4ccafd, 'Assorted Bakery Snacks', 'Variety pack of delicious bakery snacks', 80, 5.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (d9a9be6b-76df-43a0-9bfb-e3fc0dc3494e, 7e152782-4f1f-4055-8375-36fa4e380e62, 'Fresh Sliced Bread', 'Soft and fresh sliced bread', 40, 2.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (ff9c93f2-8b2c-484e-bc27-7abcf0135d97, 0031be98-7fc5-46ba-b3e0-9be451f04d6b, 'Whole Wheat Hamburger Buns', 'Healthy whole wheat hamburger buns', 30, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (a4f64f5a-c0c8-45b2-94a2-5a3acbf09a7d, 2462eee8-368a-4238-a00e-7bc3a7ac1862, 'Multigrain Packaged Bread', 'Nutritious multigrain packaged bread', 50, 4.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (5d6cf6d7-4e43-4478-b3cb-99dbd4db49a3, 4d21c9a4-b8f1-4cb6-a84d-f646630c8ef7, 'Whole Wheat Tortillas', 'Healthy whole wheat tortillas for wraps', 60, 2.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (7e22f17b-4c3b-472e-8e20-d46f5be0f3d0, 1f70609a-7655-4602-9c61-f5f0c001106d, 'Heavy Cream', 'Rich and creamy heavy cream for cooking', 50, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (5a274914-b63c-4b82-8e54-aa14f49933bb, d31c547d-faee-4b37-b1eb-fedc0b5ebdcd, 'Whole Milk', 'Fresh and nutritious whole milk', 100, 2.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (f8a4586e-6768-45df-850b-5e312e67c2e9, 172dfd51-4fe5-4ba8-9aed-098a7b611a27, 'Large Grade A Eggs', 'Farm-fresh large grade A eggs', 120, 4.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (895c0f44-295e-498d-9fd2-3eb12163655b, a106ca69-003a-4334-a9aa-f4c3d31365d8, 'Salted Butter', 'Creamy and flavorful salted butter', 80, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (b2b68b4b-99b4-4199-aa5e-24eab8f5433f, 48f54a9c-5fb0-4aa7-8ae3-cf25eb4f6af6, 'Freshly Squeezed Orange Juice', 'Pure and refreshing orange juice', 60, 5.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (bc5ef720-2ee6-4e32-a2b3-2275f3f53907, 1918f537-dc51-4f38-a909-f74ae084d459, 'LED Light Bulbs', 'Energy-efficient LED light bulbs', 200, 8.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (abba64c4-88a5-403a-ba27-6888a2c2b0eb, 920a8fc0-f349-4a15-a7a7-11041a587001, 'Large Garbage Bags', 'Strong and durable large garbage bags', 100, 10.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (cfa7fe5e-7d8b-4e4a-9c94-9c5f89573c30, 0d6148bb-d69b-4978-aa8d-612e5230a890, 'Bleach', 'Powerful bleach for cleaning and disinfecting', 50, 3.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (a65a1cfd-3d9c-4e34-84e3-f60785de6b26, bf7b23b8-920a-4f1c-ac45-f264941cf766, 'Liquid Laundry Detergent', 'Effective liquid laundry detergent', 80, 7.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (65a31b05-40da-457d-a0e4-d8e23fb20194, 12f4040b-25a1-4a1e-8f95-b47c52adeacb, 'Moisturizing Shampoo', 'Gentle and moisturizing shampoo for all hair types', 60, 5.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (36d1e155-220d-41e6-91a4-00d16629e4bb, 6aae912b-61ef-44da-bf81-abd7753c42d2, 'Regular Absorbency Tampons', 'Comfortable and reliable tampons', 100, 6.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (c302f180-92af-466b-9eab-85f1d2795c2b, 86771edf-06a0-415f-8aa9-87671e5c9292, 'Beef Flavored Dog Food', 'Tasty and nutritious beef-flavored dog food', 120, 15.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (69d36e53-1b92-42c1-a5ec-71e9f8e2f50b, 633c3607-30ef-4b2b-bd67-6379ebcbdcd2, 'All-Purpose Surface Cleaner', 'Versatile cleaner for various surfaces', 70, 4.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (e0e56e9e-cb68-4269-98d5-3a06bb58bc8f, 04baa7d4-7153-40bc-a86c-23db4b5a0a54, 'Pain Relief Tablets', 'Effective pain relief tablets', 150, 9.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (5e49b490-3a2b-4579-aa6f-b07a83784e58, 43ab2279-13d4-4d89-8b8e-5fe8ecbadd23, 'Fresh Scent Deodorant', 'Long-lasting fresh scent deodorant', 80, 4.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (144206f3-7f14-4d6e-b2f2-5f43762b85f0, 4c7673da-5f8e-4c58-b5fa-5c9baf7a72df, 'Moisturizing Hand Soap', 'Gentle and moisturizing hand soap', 90, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (2f5dc69f-4e52-47aa-99b4-7c35a4c2a717, 348d0c2a-62b9-49dd-9b3d-953d61f8dcb2, 'Authentic Mexican Salsa', 'Spicy and flavorful salsa made with authentic Mexican ingredients', 50, 2.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (cb009bc2-eb25-4a07-af32-34d72f816ad2, 1a9cfccf-5b63-47c6-aac0-3e73a10311fb, 'Savory Marinade Sauce', 'Versatile marinade sauce for meat and vegetables', 40, 3.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (7ad93ec8-d7fb-4ed9-81d7-18b70a92921a, 35c641ee-0cb8-4b02-9ddb-df28bbbf3e25, 'Creamy Vanilla Yogurt', 'Rich and creamy vanilla yogurt', 60, 2.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (1a51b251-d76c-4f37-ba94-d77c79d8e5db, 4d97a53c-23b3-441b-8598-73fa90e9a2c6, 'Smooth Cream Cheese', 'Smooth and creamy cream cheese', 40, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (e93c02de-6ff3-4763-8a13-4cf5a4cb7bf7, 5825923f-b6c7-43c7-8362-1cc962da58b7, 'Rich Chocolate Ice Cream', 'Decadent and rich chocolate ice cream', 50, 6.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (67a2a0d1-5628-4d0a-94cb-505ab86b98d3, e944680d-d8e8-4257-b0be-692fe6e17b9d, 'Assorted Frozen Desserts', 'Variety pack of delicious frozen desserts', 70, 8.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (c29d83d4-8b5c-44b3-b1c1-f9eb0b7486f2, 74471139-fae0-4514-a98e-8641dd339936, 'Assorted Greeting Cards', 'Variety pack of assorted greeting cards', 90, 4.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (1fd80f53-f837-4dc1-af4d-36b2e7b1384e, 7dcd0fd2-2dc6-49a2-b08c-c580485dc1dc, 'Long-Grain White Rice', 'Premium quality long-grain white rice', 80, 5.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (0be0f5f0-5d17-4d7d-bc19-8c201d31a5e5, 32c0d7cd-0621-4322-b157-8c54b397b12d, 'Soy Sauce', 'Traditional soy sauce for seasoning', 60, 2.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (1d2b3f56-36cb-4fa3-b7e7-c6c6a5f5a460, 0e5a3b64-1876-4d9a-8eb2-410221049424, 'Spaghetti Pasta', 'Classic spaghetti pasta for your favorite recipes', 70, 1.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (5d14b2df-2f1a-447a-b6c3-d892f0a9dc8e, 62be663e-cb70-4e05-a700-434229e54d5b, 'Assorted Fruit Snacks', 'Assorted fruit-flavored snacks for all ages', 100, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (eaa6c2a7-f5ae-4a5c-a4b1-cfcfe63b8327, 0d015186-e3dc-4c72-8fd2-ace2d97ab4bd, 'Dill Pickles', 'Crunchy and tangy dill pickles', 50, 2.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (ed0b3d4f-7d6d-4e06-89ec-3c300d80d10a, 3baf0a88-b4c7-4d9e-bced-31ab730b3a3b, 'Ketchup', 'Classic ketchup for all your favorite foods', 80, 3.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (16d4d1d5-01d8-4f8e-a282-8e4c29b2a7f8, 02d25ab1-1cc5-4eff-9e04-bd3cc0092aa3, 'Pure Olive Oil', 'Pure olive oil for cooking and dressing', 60, 7.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (e6edbe51-9d7a-46e4-9910-1a5ef35e882e, c302e632-c9d4-4988-9b8b-75dacc586c1c, 'Caesar Salad Mix', 'Classic Caesar salad mix with dressing included', 40, 4.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (63e9d8a0-6a86-4338-81bc-ee7d6aa2cf09, 805ae701-21e7-4c6f-a298-8acdbc823efe, 'Ranch Dressing', 'Creamy and tangy ranch dressing for salads and dips', 60, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (9bfc00f5-6867-4e67-bb8b-fa6d336a6a3c, 4008ac21-fc7b-4249-a537-a4cdade40bb7, 'Canned Tuna in Oil', 'Premium canned tuna in oil', 50, 2.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (ef48dbd7-7f05-40e5-bd88-48c20ff89a0b, 3eba06be-a388-4e7a-b915-3470dbf9dcfb, 'Mixed Vegetables', 'Assorted mixed vegetables', 70, 2.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (e78fd18b-2d8f-4a24-89f7-fc145f02da30, e2adedd9-1fae-405e-99c9-ec32128ccf08, 'Canned Black Beans', 'Premium quality canned black beans', 40, 1.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (f59e1535-3a01-4f59-af22-850ab0d7e3d3, a6788a71-28c2-4899-a560-9b43fd8c0639, 'Assorted Crackers', 'Variety pack of assorted crackers', 80, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (0f2f4f9b-45c9-46c4-bd43-c5aaacce014d, 9e850bd1-d7eb-44db-b4e3-2b0a04973531, 'Chicken Noodle Soup', 'Classic chicken noodle soup', 60, 2.49);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (fa847f4d-d09d-4d3d-bc3d-5c59329d7404, 9b3a4286-6137-46cb-9daa-79948bc9db0c, 'Instant Mashed Potatoes', 'Quick and easy instant mashed potatoes', 50, 3.99);
+INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (f89524b5-5df8-459e-935b-527e18d261cf, 258e7196-fcf1-488c-b4f6-3d580e904221, 'Frozen Lasagna', 'Classic frozen lasagna ready to bake', 40, 8.99);
 
 INSERT INTO CustomerOrder (id, personEmail, productId , description, quantity, time) VALUES (e9b95f60-49ba-4be6-b565-420a262b840f, 'helen@gokdis.ecosys.eu', fb711ca3-17b0-4094-864a-ce02fde0e853, 'new product', 40, toTimestamp(now()));
-
-
 
 INSERT INTO Cell (x, y, sectionId) VALUES (176, 128, fb711ca3-17b0-4094-864a-ce02fde0e852);
 INSERT INTO Cell (x, y, sectionId) VALUES (208, 144, fb711ca3-17b0-4094-864a-ce02fde0e852);

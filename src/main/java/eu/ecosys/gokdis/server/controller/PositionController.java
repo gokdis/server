@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,17 +33,11 @@ public class PositionController {
         return repository.findById(id).orElseThrow();
     }
 
-    @PutMapping(value = "/position/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public Position updateById(@PathVariable UUID id, @RequestBody Position position) {
-        return repository.updateById(id, position);
-    }
-
     @PostMapping(value = "/position")
     @PreAuthorize("hasRole('ADMIN')")
     public Position savePositionById(@RequestBody Position position) {
         return repository.save(new Position(
-                position.id(), position.customerId(),
+                position.id(), position.personEmail(),
                 position.x(), position.y(),
                 position.time()));
     }
