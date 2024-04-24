@@ -156,7 +156,8 @@
             const entries = data.filter(entry => entry.color === color);
             entries.forEach(entry => {
                 if (!sectionMap.has(entry.name)) {
-                    const id = generateUUID();
+                    //const id = generateUUID();
+                    const id = entry.name;
                     sectionMap.set(entry.name, id);
                     sectionData.push(`(${id}, '${entry.name}')`);
                 }
