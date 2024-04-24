@@ -6,31 +6,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supermarket Grid Drawer</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            height: 100vh;
+        }
+
+        #container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-height: 80vh; /* Maximum height of the container */
+            overflow: auto; /* Enable scrollbars if content overflows */
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"],
+        input[type="color"],
+        input[type="text"],
+        button {
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #colorList {
+            margin-top: 20px;
+        }
+
+        #colorItemList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #colorItemList li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
         canvas {
             border: 1px solid #000;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
-    <h2>Supermarket Grid Drawer</h2>
-    <label for="imageInput">Upload Supermarket PNG Image:</label>
-    <input type="file" id="imageInput" accept="image/png" onchange="loadImage(event)">
-    <label for="colorPicker">Select Aisle Color:</label>
-    <input type="color" id="colorPicker">
-    <label for="nameInput">Enter Name:</label>
-    <input type="text" id="nameInput">
-    <button onclick="exportGrid()">Export JSON</button>
-    <input type="file" id="importInput" accept=".json" onchange="importGrid(event)">
-    <button onclick="clearCanvas()">Clear Canvas</button>
-    <div id="colorList">
-        <h3>Color List</h3>
-        <ul id="colorItemList"></ul>
+    <div id="container">
+        <h2>Supermarket Grid Drawer</h2>
+        <p>Press and release the key R for random colour</p>
+        <p>Press right mouse button for deleting a cell</p>
+        <p>Press left mouse button for continuously drawing</p>
+        <label for="imageInput">Upload Supermarket PNG Image:</label>
+        <input type="file" id="imageInput" accept="image/png" onchange="loadImage(event)">
+        <label for="colorPicker">Select Aisle Color:</label>
+        <input type="color" id="colorPicker">
+        <label for="nameInput">Enter Name:</label>
+        <input type="text" id="nameInput">
+        <button onclick="exportGrid()">Export JSON</button>
+        <input type="file" id="importInput" accept=".json" onchange="importGrid(event)">
+        <button onclick="clearCanvas()">Clear Canvas</button>
+        <div id="colorList">
+            <h3>Color List</h3>
+            <ul id="colorItemList"></ul>
+        </div>
+        <canvas id="gridCanvas" width="800" height="600"></canvas>
     </div>
-    <canvas id="gridCanvas" width="800" height="600"></canvas>
-</body>
+
 <script>
-    localStorage.removeItem('cells');
+    localStorage.clear()
     let canvas = document.getElementById('gridCanvas');
     let ctx = canvas.getContext('2d');
     let colorPicker = document.getElementById('colorPicker');
@@ -38,6 +104,9 @@
     let img;
     const gridSize = 16;
     let isPainting = false;
+    let isRectangularMode = false;
+    let startX, startY, endX, endY;
+
     function loadImage(event) {
         let input = event.target;
         let reader = new FileReader();
@@ -54,25 +123,33 @@
 
         reader.readAsDataURL(input.files[0]);
     }
+
     canvas.addEventListener('mousedown', handleMouseDown);
-    canvas.addEventListener('mouseup', stopPainting);
-    canvas.addEventListener('mousemove', drawGrid);
+    canvas.addEventListener('mouseup', handleMouseUp);
+    canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('contextmenu', handleRightClick);
+    document.addEventListener('keyup', selectRandomColor);
+
     function handleRightClick(event) {
         event.preventDefault();
-        selectRandomColor();
+        deleteCell(event);
     }
+
     function handleMouseDown(event) {
         if (event.button === 2) {
-            selectRandomColor();
+            handleRightClick(event);
         } else if (event.button === 0) {
             startPainting(event);
         }
     }
-    function selectRandomColor() {
-        let randomColor = getRandomColor();
-        colorPicker.value = randomColor;
+
+    function selectRandomColor(event) {
+        if (event.key === 'r') {
+            let randomColor = getRandomColor();
+            colorPicker.value = randomColor;
+        }
     }
+
     function getRandomColor() {
         let letters = '0123456789ABCDEF';
         let color = '#';
@@ -81,27 +158,35 @@
         }
         return color;
     }
+
     function startPainting(event) {
         if (!imageData) return;
         isPainting = true;
-        drawGrid(event);
+        startX = Math.round((event.clientX - canvas.getBoundingClientRect().left) / gridSize) * gridSize;
+        startY = Math.round((event.clientY - canvas.getBoundingClientRect().top) / gridSize) * gridSize;
     }
-    function stopPainting() {
-        isPainting = false;
+
+    function handleMouseMove(event) {
+        if (!isPainting) return;
+        if (!isRectangularMode) {
+            drawGrid(event);
+        }
     }
-    function checkOverlap(x, y) {
-        let aisles = JSON.parse(localStorage.getItem('cells')) || [];
-        return aisles.some((aisle) => {
-            return (
-                x >= aisle.x &&
-                x < aisle.x + gridSize &&
-                y >= aisle.y &&
-                y < aisle.y + gridSize
-            );
-        });
-    }
-    function drawGrid(event) {
+
+    function handleMouseUp(event) {
         if (!imageData || !isPainting) return;
+        isPainting = false;
+        if (event.ctrlKey) {
+            isRectangularMode = true;
+            endX = Math.round((event.clientX - canvas.getBoundingClientRect().left) / gridSize) * gridSize;
+            endY = Math.round((event.clientY - canvas.getBoundingClientRect().top) / gridSize) * gridSize;
+            drawRectangularGrid();
+        } else {
+            drawGrid(event);
+        }
+    }
+
+    function drawGrid(event) {
         let x = Math.round((event.clientX - canvas.getBoundingClientRect().left) / gridSize) * gridSize;
         let y = Math.round((event.clientY - canvas.getBoundingClientRect().top) / gridSize) * gridSize;
         let color = colorPicker.value;
@@ -125,69 +210,64 @@
                 y: y,
                 name: name
             };
-            let aisles = JSON.parse(localStorage.getItem('cells')) || [];
+            let aisles = JSON.parse(localStorage.getItem('aisles')) || [];
             aisles.push(aisleInfo);
-            localStorage.setItem('cells', JSON.stringify(aisles));
+            localStorage.setItem('aisles', JSON.stringify(aisles));
         }
     }
-    function exportGrid() {
-        if (!imageData) return;
-        let aisles = JSON.parse(localStorage.getItem('cells')) || [];
-        let jsonExport = JSON.stringify(aisles);
-        let blob = new Blob([jsonExport], { type: 'application/json' });
-        let link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'cells.json';
-        link.click();
-        const { sectionInsertCommands, sectionMap } = convertToSectionInsert(aisles);
-        const cellInsertCommands = convertToCellInsert(aisles, sectionMap);
-        const sqlContent = sectionInsertCommands + '\n\n' + cellInsertCommands;
-        const sqlBlob = new Blob([sqlContent], { type: 'text/sql' });
-        const sqlLink = document.createElement('a');
-        sqlLink.href = URL.createObjectURL(sqlBlob);
-        sqlLink.download = 'data.sql';
-        sqlLink.click();
-    }
-    function convertToSectionInsert(data) {
-        const sectionData = [];
-        const sectionMap = new Map();
-        const uniqueColors = [...new Set(data.map(entry => entry.color))];
-        uniqueColors.forEach(color => {
-            const entries = data.filter(entry => entry.color === color);
-            entries.forEach(entry => {
-                if (!sectionMap.has(entry.name)) {
-                    const id = generateUUID();
-                    sectionMap.set(entry.name, id);
-                    sectionData.push(`(${id}, '${entry.name}')`);
-                }
-            });
-        });
 
-        const insertCommands = sectionData.map(data => `INSERT INTO Section (id, name) VALUES ${data};`);
-        return { sectionInsertCommands: insertCommands.join('\n') + '\n', sectionMap };
+    function drawRectangularGrid() {
+        let color = colorPicker.value;
+        let name = document.getElementById('nameInput').value || color;
+        let alphaValue = 0.5;
+        ctx.fillStyle = `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, ${alphaValue})`;
+        let minX = Math.min(startX, endX);
+        let minY = Math.min(startY, endY);
+        let width = Math.abs(startX - endX) + gridSize;
+        let height = Math.abs(startY - endY) + gridSize;
+        ctx.fillRect(minX, minY, width, height);
+
+        for (let x = minX; x < minX + width; x += gridSize) {
+            for (let y = minY; y < minY + height; y += gridSize) {
+                let isOverlapping = checkOverlap(x, y);
+                if (!isOverlapping) {
+                    let aisleInfo = {
+                        color: color,
+                        x: x,
+                        y: y,
+                        name: name
+                    };
+                    let aisles = JSON.parse(localStorage.getItem('aisles')) || [];
+                    aisles.push(aisleInfo);
+                    localStorage.setItem('aisles', JSON.stringify(aisles));
+                }
+            }
+        }
     }
-    function generateUUID() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
+
+    function checkOverlap(x, y) {
+        let aisles = JSON.parse(localStorage.getItem('aisles')) || [];
+        return aisles.some((aisle) => {
+            return (
+                x >= aisle.x &&
+                x < aisle.x + gridSize &&
+                y >= aisle.y &&
+                y < aisle.y + gridSize
+            );
         });
     }
-    function convertToCellInsert(aisles, sectionMap) {
-        return aisles.map(entry => {
-            return `INSERT INTO Cell (x, y, sectionId) VALUES (${entry.x}, ${entry.y}, ${sectionMap.get(entry.name)});`;
-        }).join('\n');
-    }
-    function importGrid(event) {
-        if (!imageData) return;
-        let input = event.target;
-        let reader = new FileReader();
-        reader.onload = function () {
-            let importedAisles = JSON.parse(reader.result);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            document.getElementById('colorItemList').innerHTML = '';
+
+    function redrawGrid() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById('colorItemList').innerHTML = '';
+        if (imageData) {
             ctx.drawImage(img, 0, 0);
-            importedAisles.forEach((aisle) => {
-                ctx.fillStyle = aisle.color;
+            let aisles = JSON.parse(localStorage.getItem('aisles')) || [];
+            aisles.forEach((aisle) => {
+                const color = aisle.color;
+                ctx.fillStyle = color;
+                let alphaValue = 0.5;
+                ctx.fillStyle = `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, ${alphaValue})`;
                 ctx.fillRect(aisle.x, aisle.y, gridSize, gridSize);
                 let colorList = document.getElementById('colorItemList');
                 if (!colorList.querySelector(`[data-color="${aisle.color}"]`)) {
@@ -198,17 +278,62 @@
                     colorList.appendChild(colorItem);
                 }
             });
+        }
+    }
 
-            localStorage.setItem('cells', JSON.stringify(importedAisles));
+    function exportGrid() {
+        if (!imageData) return;
+        let aisles = JSON.parse(localStorage.getItem('aisles')) || [];
+        let jsonExport = JSON.stringify(aisles);
+        let blob = new Blob([jsonExport], {
+            type: 'application/json'
+        });
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'cells.json';
+        link.click();
+    }
+
+    function importGrid(event) {
+        if (!imageData) return;
+        let input = event.target;
+        let reader = new FileReader();
+        reader.onload = function () {
+            let importedAisles = JSON.parse(reader.result);
+            localStorage.setItem('aisles', JSON.stringify(importedAisles));
+            redrawGrid();
         };
         reader.readAsText(input.files[0]);
     }
+
+    function deleteCell(event) {
+        if (!imageData) return;
+        let x = Math.round((event.clientX - canvas.getBoundingClientRect().left) / gridSize) * gridSize;
+        let y = Math.round((event.clientY - canvas.getBoundingClientRect().top) / gridSize) * gridSize;
+        let aisles = JSON.parse(localStorage.getItem('aisles')) || [];
+        let updatedAisles = aisles.filter((aisle) => {
+            return !(
+                x >= aisle.x &&
+                x < aisle.x + gridSize &&
+                y >= aisle.y &&
+                y < aisle.y + gridSize
+            );
+        });
+        localStorage.setItem('aisles', JSON.stringify(updatedAisles));
+        redrawGrid();
+    }
+
     function clearCanvas() {
         if (!imageData) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        localStorage.removeItem('cells');
+        ctx.drawImage(img, 0, 0);
+        localStorage.removeItem('aisles');
+        document.getElementById('colorItemList').innerHTML = '';
     }
 </script>
+
+
+
 </body>
 
 </html>
