@@ -3,9 +3,9 @@ INSERT INTO Person (email, password, role, name, surname, age, gender) VALUES ('
 INSERT INTO Person (email, password, role, name, surname, age, gender) VALUES ('helen@gokdis.ecosys.eu', '$2y$10$2ufVtBR5Ha6KuqB/6lXtDewp/HQv/hIkruUd7ecWGYnXJFalYJ2cS', 'ROLE_ADMIN', 'Helen', 'of Troy', 15, 'Female');
 INSERT INTO Person (email, password, role, name, surname, age, gender) VALUES ('rick@gokdis.ecosys.eu', '$2y$10$2ufVtBR5Ha6KuqB/6lXtDewp/HQv/hIkruUd7ecWGYnXJFalYJ2cS', 'ROLE_ADMIN', 'Rick', 'Sanches', 1000, 'Other');
 
-INSERT INTO Beacon (mac, id, x, y) VALUES ('F5:E5:8C:26:DB:7A', '10000', 36, 41);
-INSERT INTO Beacon (mac, id, x, y) VALUES ('EB:6F:20:3B:89:E2', '10002', 27, 49);
-INSERT INTO Beacon (mac, id, x, y) VALUES ('C7:10:69:07:FB:51', '26268', 17, 41);
+INSERT INTO Beacon (mac, id, x, y) VALUES ('F5:E5:8C:26:DB:7A', '10000', 590, 640);
+INSERT INTO Beacon (mac, id, x, y) VALUES ('EB:6F:20:3B:89:E2', '10002', 435, 767);
+INSERT INTO Beacon (mac, id, x, y) VALUES ('C7:10:69:07:FB:51', '26268', 280, 640);
 
 INSERT INTO Section (id, name) VALUES (408ce76e-c6c1-4819-a47a-456627dd7d56, 'pantry');
 INSERT INTO Section (id, name) VALUES (e5650acf-0597-461c-85b8-5679c76df7ac, 'dairy eggs');
