@@ -20,7 +20,11 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public PageResponse<Product> findAll(Pageable pageable, String pagingState) {
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
+    public PageResponse<Product> findAllByPage(Pageable pageable, String pagingState) {
         ByteBuffer decodedPagingState = !pagingState.isBlank()
                 ? ByteBuffer.wrap(Base64.getUrlDecoder().decode(pagingState))
                 : null;
