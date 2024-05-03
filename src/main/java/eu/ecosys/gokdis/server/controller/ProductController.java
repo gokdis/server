@@ -1,6 +1,5 @@
 package eu.ecosys.gokdis.server.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,8 @@ public class ProductController {
      * }
      */
 
-    public List<Product> findAll() {
+    @GetMapping(value = "/product")
+    public Iterable<Product> findAll() {
         return productService.findAll();
     }
 
