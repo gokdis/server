@@ -9,5 +9,5 @@ import org.springframework.data.domain.Slice;
 import eu.ecosys.gokdis.server.entity.Product;
 
 public interface ProductRepository extends CassandraRepository<Product, UUID> {
-    Slice<Product> findAll(Pageable pageable);
+    Slice<Product> findAllByPage(Pageable pageable);
 }
