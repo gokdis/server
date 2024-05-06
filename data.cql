@@ -29,8 +29,6 @@ INSERT INTO Section (id, name) VALUES (b312ddc6-7af5-4411-94d1-9ac74d4cefc6, 'pe
 INSERT INTO Section (id, name) VALUES (dbd8bb0c-95ec-4794-9d14-3618b3698ca1, 'bulk')
 INSERT INTO Section (id, name) VALUES (424f7521-4954-40f4-8091-3c1706d30b82, 'other')
 
-INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (8681137312796, 424f7521-4954-40f4-8091-3c1706d30b82, 'Mechanical pencil', '', 100, 1.99);
-
 INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (7a8b8d71-ee3e-4a05-9241-24e001b73852, 408ce76e-c6c1-4819-a47a-456627dd7d56, 'baking ingredients', '', 100, 1.99);
 INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (3ed8ef8d-d874-4c6f-8711-0eb96b4c54c5, e5650acf-0597-461c-85b8-5679c76df7ac, 'soy lactosefree', 'Comfortable and absorbent toilet paper', 200, 3.49);
 INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES (904f16e7-92b7-4a97-a0fd-4580843427af, e5650acf-0597-461c-85b8-5679c76df7ac, 'butter', 'Durable and absorbent paper towels', 150, 2.99);
