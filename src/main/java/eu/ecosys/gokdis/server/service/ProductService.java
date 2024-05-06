@@ -1,17 +1,11 @@
 package eu.ecosys.gokdis.server.service;
 
-import java.nio.ByteBuffer;
-import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.cassandra.core.query.CassandraPageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
-import eu.ecosys.gokdis.server.entity.PageResponse;
 import eu.ecosys.gokdis.server.entity.Product;
 import eu.ecosys.gokdis.server.repository.ProductRepository;
 
@@ -22,23 +16,6 @@ public class ProductService {
 
     public List<Product> findAll() {
         return productRepository.findAll();
-    }
-
-    public PageResponse<Product> findAllByPage(Pageable pageable, String pagingState) {
-        ByteBuffer decodedPagingState = !pagingState.isBlank()
-                ? ByteBuffer.wrap(Base64.getUrlDecoder().decode(pagingState))
-                : null;
-        CassandraPageRequest cassandraPageRequest = CassandraPageRequest.of(pageable, decodedPagingState);
-        Slice<Product> slice = productRepository.findAll(cassandraPageRequest);
-        List<Product> content = slice.getContent();
-        ByteBuffer nextPagingState = slice.hasNext() ? ((CassandraPageRequest) slice.nextPageable()).getPagingState()
-                : null;
-        byte[] bytes = new byte[nextPagingState.remaining()];
-        nextPagingState.get(bytes);
-        return !content.isEmpty()
-                ? new PageResponse<Product>(content,
-                        nextPagingState == null ? "" : Base64.getUrlEncoder().encodeToString(bytes))
-                : null;
     }
 
     public Product findById(UUID id) {

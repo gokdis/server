@@ -21,20 +21,6 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    /*
-     * @GetMapping(value = "/product")
-     * 
-     * @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-     * public PageResponse<Product> findAllByPage(@RequestParam(defaultValue = "0")
-     * int pageNumber,
-     * 
-     * @RequestParam(defaultValue = "10") int pageSize, @RequestParam(defaultValue =
-     * "") String pagingState) {
-     * return productService.findAll(PageRequest.of(pageNumber, pageSize),
-     * pagingState);
-     * }
-     */
-
     @GetMapping(value = "/product")
     public Iterable<Product> findAll() {
         return productService.findAll();
