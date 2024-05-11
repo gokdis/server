@@ -86,9 +86,6 @@ INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES ('40
 INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES ('3377711000283', f3853589-d1be-4eb1-b4b1-18cdaa78c63e, 'WILD LIGHTER', 'Easy to use and cool lighter for everyone!', 2, 250);
 INSERT INTO Product (id, sectionId, name, description, stock, price) VALUES ('5356524975481', f3853589-d1be-4eb1-b4b1-18cdaa78c63e, 'XIAOMI BEEBEST ULTRATHIN CHARGING LIGHTER', 'Electronically light everything!', 2, 100);
 
-
-INSERT INTO CustomerOrder (id, personEmail, productId , description, quantity, time) VALUES (e9b95f60-49ba-4be6-b565-420a262b840f, 'helen@gokdis.ecosys.eu', fb711ca3-17b0-4094-864a-ce02fde0e853, 'new product', 40, toTimestamp(now()));
-
 INSERT INTO Cell (x, y, sectionId) VALUES (176, 128, fb711ca3-17b0-4094-864a-ce02fde0e852);
 INSERT INTO Cell (x, y, sectionId) VALUES (208, 144, fb711ca3-17b0-4094-864a-ce02fde0e852);
 INSERT INTO Cell (x, y, sectionId) VALUES (224, 144, fb711ca3-17b0-4094-864a-ce02fde0e852);
