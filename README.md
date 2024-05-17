@@ -58,4 +58,4 @@ mvn clean package
 
 * Log in at [https://gokdis.ecosys.eu/](https://gokdis.ecosys.eu/login)
 
-* Import the SAR file into Insomnia or Postman to see the available endpoints.
+* Import the HAR file into Insomnia or Postman to see the available endpoints.
