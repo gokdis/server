@@ -13,38 +13,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eu.ecosys.gokdis.server.entity.Position;
-import eu.ecosys.gokdis.server.repository.PositionRepository;
+import eu.ecosys.gokdis.server.service.PositionService;
 
 @RestController
 @RequestMapping("api/v1")
 public class PositionController {
+    private final PositionService positionService;
+
     @Autowired
-    private PositionRepository repository;
+    public PositionController(PositionService positionService) {
+        this.positionService = positionService;
+    }
 
     @GetMapping(value = "/position")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Iterable<Position> findAll() {
-        return repository.findAll();
+        return positionService.findAll();
     }
 
     @GetMapping(value = "/position/{id}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Position findById(@PathVariable UUID id) {
-        return repository.findById(id).orElseThrow();
+        return positionService.findById(id);
     }
 
     @PostMapping(value = "/position")
     @PreAuthorize("hasRole('ADMIN')")
-    public Position savePositionById(@RequestBody Position position) {
-        return repository.save(new Position(
-                position.id(), position.personEmail(),
-                position.x(), position.y(),
-                position.time()));
+    public Position savePositionById(@RequestBody Position positionDto) {
+        return positionService.savePositionById(positionDto);
     }
 
     @DeleteMapping(value = "/position/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteById(@PathVariable UUID id) {
-        repository.delete(repository.findById(id).orElseThrow());
+        positionService.deleteById(id);
     }
 }

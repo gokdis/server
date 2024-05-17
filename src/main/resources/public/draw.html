@@ -216,40 +216,6 @@
         }
     }
 
-    function exportGrid() {
-        if (!imageData) return;
-        let aisles = JSON.parse(localStorage.getItem('cells')) || [];
-        let jsonExport = JSON.stringify(aisles);
-        let blob = new Blob([jsonExport], { type: 'application/json' });
-        let link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'cells.json';
-        link.click();
-        const { sectionInsertCommands, sectionMap } = convertToSectionInsert(aisles);
-        const cellInsertCommands = convertToCellInsert(aisles, sectionMap);
-        const sqlContent = sectionInsertCommands + '\n\n' + cellInsertCommands;
-        const sqlBlob = new Blob([sqlContent], { type: 'text/sql' });
-        const sqlLink = document.createElement('a');
-        sqlLink.href = URL.createObjectURL(sqlBlob);
-        sqlLink.download = 'data.sql';
-        sqlLink.click();
-    }
-    function convertToSectionInsert(data) {
-        const sectionData = [];
-        const sectionMap = new Map();
-        const uniqueColors = [...new Set(data.map(entry => entry.color))];
-        uniqueColors.forEach(color => {
-            const entries = data.filter(entry => entry.color === color);
-            entries.forEach(entry => {
-                if (!sectionMap.has(entry.name)) {
-                    //const id = generateUUID();
-                    const id = entry.name;
-                    sectionMap.set(entry.name, id);
-                    sectionData.push(`(${id}, '${entry.name}')`);
-                }
-            });
-        });
-    }
     function drawRectangularGrid() {
         let color = colorPicker.value;
         let name = document.getElementById('nameInput').value || color;

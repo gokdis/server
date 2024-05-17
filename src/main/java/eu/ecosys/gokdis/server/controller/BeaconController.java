@@ -12,41 +12,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eu.ecosys.gokdis.server.entity.Beacon;
-import eu.ecosys.gokdis.server.repository.BeaconRepository;
+import eu.ecosys.gokdis.server.service.BeaconService;
 
 @RestController
 @RequestMapping("api/v1")
 public class BeaconController {
     @Autowired
-    private BeaconRepository repository;
+    private BeaconService beaconService;
 
     @GetMapping(value = "/beacon")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Iterable<Beacon> findAll() {
-        return repository.findAll();
+        return beaconService.findAll();
     }
 
     @GetMapping(value = "/beacon/{mac}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Beacon findByMac(@PathVariable String mac) {
-        return repository.findByMac(mac).orElseThrow();
+        return beaconService.findByMac(mac);
     }
 
     @PutMapping(value = "/beacon/{mac}")
     @PreAuthorize("hasRole('ADMIN')")
     public Beacon updateByMac(@PathVariable String mac, @RequestBody Beacon beacon) {
-        return repository.updateByMac(mac, beacon);
+        return beaconService.updateByMac(mac, beacon);
     }
 
     @PostMapping(value = "/beacon")
     @PreAuthorize("hasRole('ADMIN')")
     public Beacon saveBeaconByMac(@RequestBody Beacon beacon) {
-        return repository.save(new Beacon(beacon.mac(), beacon.id(), beacon.x(), beacon.y()));
+        return beaconService.save(beacon);
     }
 
     @DeleteMapping(value = "/beacon/{mac}")
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteByMac(@PathVariable String mac) {
-        repository.delete(repository.findByMac(mac).orElseThrow());
+        beaconService.deleteByMac(mac);
     }
 }

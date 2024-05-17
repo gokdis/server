@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eu.ecosys.gokdis.server.entity.Section;
-import eu.ecosys.gokdis.server.repository.SectionRepository;
+import eu.ecosys.gokdis.server.service.SectionService;
 
 @RestController
 @RequestMapping("api/v1")
 public class SectionController {
     @Autowired
-    private SectionRepository sectionRepository;
+    private SectionService sectionService;
 
     @GetMapping(value = "/section")
     public Iterable<Section> findAll() {
-        return sectionRepository.findAll();
+        return sectionService.findAll();
     }
 
     @PostMapping(value = "/section")
     @PreAuthorize("hasRole('ADMIN')")
     public Section save(@RequestBody Section section) {
-        return sectionRepository.save(new Section(section.id(), section.name()));
+        return sectionService.save(section);
     }
 
     @DeleteMapping(value = "/section/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable UUID id) {
-        sectionRepository.delete(sectionRepository.findById(id).orElseThrow());
+        sectionService.delete(id);
     }
 }

@@ -1,6 +1,5 @@
 package eu.ecosys.gokdis.server.controller;
 
-import eu.ecosys.gokdis.server.entity.CustomerOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import eu.ecosys.gokdis.server.entity.CustomerOrder;
 import eu.ecosys.gokdis.server.repository.OrderRepository;
 
 @RestController

@@ -2,7 +2,6 @@ package eu.ecosys.gokdis.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,49 +12,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eu.ecosys.gokdis.server.entity.Person;
-import eu.ecosys.gokdis.server.repository.PersonRepository;
+import eu.ecosys.gokdis.server.service.PersonService;
 
 @RestController
 @RequestMapping("api/v1")
 public class PersonController {
     @Autowired
-    private PersonRepository repository;
-
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private PersonService service;
 
     @GetMapping(value = "/person")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Iterable<Person> findAll() {
-        return repository.findAll();
+        return service.findAll();
     }
 
     @GetMapping(value = "/person/{email}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Person findByEmail(@PathVariable String email) {
-        return repository.findByEmail(email).get();
+        return service.findByEmail(email).orElse(null);
     }
 
     @PutMapping(value = "/person/{email}")
     @PreAuthorize("hasRole('ADMIN')")
     public Person updateByEmail(@PathVariable String email, @RequestBody Person person) {
-        return repository.updateByEmail(email, person);
+        return service.updateByEmail(email, person);
     }
 
     @PostMapping(value = "/person")
     public Person save(@RequestBody Person person) {
-        return repository.save(new Person(
-                person.email(),
-                passwordEncoder.encode(person.password()),
-                person.role(),
-                person.name(),
-                person.surname(),
-                person.age(),
-                person.gender()));
+        return service.save(person);
     }
 
     @DeleteMapping(value = "/person/{email}")
     @PreAuthorize("hasRole('ADMIN')")
     public void delete(@PathVariable String email) {
-        repository.delete(repository.findByEmail(email).get());
+        service.delete(email);
     }
 }

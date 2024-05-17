@@ -11,34 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import eu.ecosys.gokdis.server.entity.Cell;
-import eu.ecosys.gokdis.server.repository.CellRepository;
+import eu.ecosys.gokdis.server.service.CellService;
 
 @RestController
 @RequestMapping("api/v1")
 public class CellController {
     @Autowired
-    private CellRepository cellRepository;
+    private CellService cellService;
 
     @GetMapping(value = "/cell/all")
     public Iterable<Cell> findAll() {
-        return cellRepository.findAll();
+        return cellService.findAll();
     }
 
     @GetMapping(value = "/cell/{x}/{y}")
     public Cell findByXAndY(@PathVariable int x, @PathVariable int y) {
-        return cellRepository.findByXAndY(x, y).get();
+        return cellService.findByXAndY(x, y);
     }
 
     @PostMapping(value = "/cell")
     @PreAuthorize("hasRole('ADMIN')")
     public Cell saveMatrix(@RequestBody Cell cell) {
-        return cellRepository
-                .save(new Cell(cell.x(), cell.y(), cell.sectionId()));
+        return cellService.saveMatrix(cell);
     }
 
     @DeleteMapping(value = "/cell/{x}/{y}")
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteById(@PathVariable int x, @PathVariable int y) {
-        cellRepository.delete(cellRepository.findByXAndY(x, y).get());
+        cellService.deleteById(x, y);
     }
 }
