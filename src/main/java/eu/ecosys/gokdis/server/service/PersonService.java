@@ -4,10 +4,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import eu.ecosys.gokdis.server.entity.Person;
 import eu.ecosys.gokdis.server.repository.PersonRepository;
 
+@Service
 public class PersonService {
     @Autowired
     private PersonRepository repository;
