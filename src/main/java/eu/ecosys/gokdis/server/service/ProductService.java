@@ -1,7 +1,6 @@
 package eu.ecosys.gokdis.server.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product findById(UUID id) {
+    public Product findById(String id) {
         return productRepository.findById(id).get();
     }
 
@@ -29,7 +28,7 @@ public class ProductService {
                 product.stock(), product.price()));
     }
 
-    public void delete(UUID id) {
+    public void delete(String id) {
         productRepository.delete(productRepository.findById(id).get());
     }
 }

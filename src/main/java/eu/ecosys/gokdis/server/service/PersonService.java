@@ -24,10 +24,6 @@ public class PersonService {
         return repository.findByEmail(email);
     }
 
-    public Person updateByEmail(String email, Person person) {
-        return repository.updateByEmail(email, person);
-    }
-
     public Person save(Person person) {
         return repository.save(new Person(
                 person.email(),

@@ -25,7 +25,7 @@ public class PositionService {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    public Position savePositionById(Position position) {
+    public Position savePosition(Position position) {
         return repository.save(new Position(
                 position.id(), position.personEmail(),
                 position.x(), position.y(),

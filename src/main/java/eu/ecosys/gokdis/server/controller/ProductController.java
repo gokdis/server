@@ -1,7 +1,5 @@
 package eu.ecosys.gokdis.server.controller;
 
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +26,7 @@ public class ProductController {
 
     @GetMapping(value = "/product/{id}")
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
-    public Product findById(@PathVariable UUID id) {
+    public Product findById(@PathVariable String id) {
         return productService.findById(id);
     }
 
@@ -43,7 +41,7 @@ public class ProductController {
 
     @DeleteMapping(value = "/product/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void delete(@PathVariable UUID id) {
+    public void delete(@PathVariable String id) {
         productService.delete(id);
     }
 }

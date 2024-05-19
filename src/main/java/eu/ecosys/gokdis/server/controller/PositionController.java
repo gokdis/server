@@ -39,8 +39,8 @@ public class PositionController {
 
     @PostMapping(value = "/position")
     @PreAuthorize("hasRole('ADMIN')")
-    public Position savePositionById(@RequestBody Position positionDto) {
-        return positionService.savePositionById(positionDto);
+    public Position savePosition(@RequestBody Position position) {
+        return positionService.savePosition(position);
     }
 
     @DeleteMapping(value = "/position/{id}")

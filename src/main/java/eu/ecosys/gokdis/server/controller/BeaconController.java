@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,12 +31,6 @@ public class BeaconController {
         return beaconService.findByMac(mac);
     }
 
-    @PutMapping(value = "/beacon/{mac}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public Beacon updateByMac(@PathVariable String mac, @RequestBody Beacon beacon) {
-        return beaconService.updateByMac(mac, beacon);
-    }
-
     @PostMapping(value = "/beacon")
     @PreAuthorize("hasRole('ADMIN')")
     public Beacon saveBeaconByMac(@RequestBody Beacon beacon) {
@@ -46,7 +39,7 @@ public class BeaconController {
 
     @DeleteMapping(value = "/beacon/{mac}")
     @PreAuthorize("hasRole('ADMIN')")
-    public void deleteByMac(@PathVariable String mac) {
-        beaconService.deleteByMac(mac);
+    public void delete(@PathVariable String mac) {
+        beaconService.delete(mac);
     }
 }

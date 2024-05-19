@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,12 +29,6 @@ public class PersonController {
     @PreAuthorize("hasAnyRole('MOD', 'ADMIN')")
     public Person findByEmail(@PathVariable String email) {
         return service.findByEmail(email).orElse(null);
-    }
-
-    @PutMapping(value = "/person/{email}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public Person updateByEmail(@PathVariable String email, @RequestBody Person person) {
-        return service.updateByEmail(email, person);
     }
 
     @PostMapping(value = "/person")
